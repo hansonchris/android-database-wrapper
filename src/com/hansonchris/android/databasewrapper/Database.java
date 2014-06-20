@@ -6,6 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * @author  Chris Hanson    <chrishanson.php@gmail.com>
+ * @version 1.0
+ * @since   2014-06-20
+ * @see     https://github.com/hansonchris/android-database-wrapper/blob/master/README
+ */
 abstract public class Database 
 {
     protected Context context;

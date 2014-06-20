@@ -5,6 +5,12 @@ import android.content.Context;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * @author  Chris Hanson    <chrishanson.php@gmail.com>
+ * @version 1.0
+ * @since   2014-06-20
+ * @see     https://github.com/hansonchris/android-database-wrapper/blob/master/README
+ */
 abstract public class DatabaseTable 
 {
     protected Context context;
