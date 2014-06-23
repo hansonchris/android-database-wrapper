@@ -21,6 +21,7 @@ abstract public class Database
     {
         this.context = context;
         openHelper = getSQLiteOpenHelper();
+        getDatabase();
     }
 
     public void execSQL(String sql)
@@ -29,9 +30,12 @@ abstract public class Database
         db.execSQL(sql);
     }
 
-    abstract protected SQLiteDatabase getDatabase();
-
     abstract protected SQLiteOpenHelper getSQLiteOpenHelper();
+
+    protected SQLiteDatabase getDatabase() 
+    {
+        return openHelper.getWritableDatabase();
+    }
 
     public int delete(String table, String whereClause, String[] whereArgs)
     {
