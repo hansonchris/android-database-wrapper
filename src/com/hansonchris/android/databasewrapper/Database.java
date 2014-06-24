@@ -4,7 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.lang.reflect.Constructor;
 
 /**
  * @author  Chris Hanson    <chrishanson.php@gmail.com>
@@ -30,11 +33,28 @@ abstract public class Database
         db.execSQL(sql);
     }
 
-    abstract protected SQLiteOpenHelper getSQLiteOpenHelper();
+    abstract protected String getDatabaseName();
+
+    abstract protected String getSqliteOpenHelperClassName();
 
     protected SQLiteDatabase getDatabase() 
     {
         return openHelper.getWritableDatabase();
+    }
+
+    protected SQLiteOpenHelper getSQLiteOpenHelper()
+    {
+        int version = ((ApplicationWithDatabaseWrapperInterface)context.getApplicationContext()).getApplicationVersionCode();
+        SQLiteOpenHelper sqliteOpenHelper = null;
+        try {
+            Class<?> classObj = Class.forName(getSqliteOpenHelperClassName());
+            Constructor<?> constructor = classObj.getConstructor(Context.class, String.class, CursorFactory.class, Integer.class);
+            sqliteOpenHelper = (SQLiteOpenHelper)constructor.newInstance(context, getDatabaseName(), null, version);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return sqliteOpenHelper;
     }
 
     public int delete(String table, String whereClause, String[] whereArgs)
