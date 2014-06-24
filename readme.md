@@ -9,14 +9,14 @@
 
 ##Implementation is simple
 
-1. Write a class that inherits from the `com.hansonchris.android.databasewrapperDatabase` abstract class.
-1. Write one or more classes that inherit from the `com.hansonchris.android.databasewrapperDatabaseTable` class.
+1. Write a class that inherits from the `com.hansonchris.android.databasewrapper.Database` abstract class.
+1. Write one or more classes that inherit from the `com.hansonchris.android.databasewrapper.DatabaseTable` class.
 1. Write a class that inherits from `android.database.sqlite.SQLiteOpenHelper`.
 1. If you haven't already, write a class that inherits from the `android.app.Application` class, and then implement `com.hansonchris.android.databasewrapper.ApplicationWithDatabaseWrapperInterface`.
 1. Optionally, create an entity class to represent a single record from a database table.
 
 ### Example code
-#### Subclass of `com.hansonchris.android.databasewrapperDatabase`
+#### Subclass of `com.hansonchris.android.databasewrapper.Database`
 ```java
 package com.hansonchris.android.databasewrappertest;
 
@@ -65,7 +65,7 @@ public class TestDatabase extends Database
 }
 ```
 
-#### Subclass of `com.hansonchris.android.databasewrapperDatabaseTable`
+#### Subclass of `com.hansonchris.android.databasewrapper.DatabaseTable`
 ```java
 package com.hansonchris.android.databasewrappertest;
 
