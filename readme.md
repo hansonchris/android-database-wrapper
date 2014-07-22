@@ -2,13 +2,13 @@
 
 ## This library serves a few key purposes
 
-* Import the android-database-wrapper library into your project
 * Handles opening and closing database connection to (hopefully) avoid crashes due to the database not being available.
 * Enables developer to automatically create tables upon app installation, and can insert data after tables are created.
 * Enables developer to automatically handle database updates when the app version is updated.
 
 ##Implementation is simple
 
+1. Import the android-database-wrapper library into your project.
 1. Write a class that inherits from the `com.hansonchris.android.databasewrapper.Database` abstract class.
 1. Write one or more classes that inherit from the `com.hansonchris.android.databasewrapper.DatabaseTable` class.
 1. Write a class that inherits from `android.database.sqlite.SQLiteOpenHelper`.
